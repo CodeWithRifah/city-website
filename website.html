@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Explorer</title>
+    <style>
+        /* Basic styling for layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .city-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .city-card {
+            background-color: white;
+            width: 300px;
+            margin: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-decoration: none; /* Remove underline for links */
+            color: inherit; /* Keep text color same */
+        }
+        .city-card:hover {
+            transform: scale(1.05);
+        }
+        .city-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .city-details {
+            padding: 15px;
+        }
+        .city-details h3 {
+            margin: 0;
+            color: #333;
+        }
+        .city-details p {
+            margin: 10px 0 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Explore Cities of pakistan</h1>
+    </header>
+
+    <div class="city-container" id="city-container">
+        <!-- City cards will be generated here dynamically -->
+    </div>
+
+    <script>
+        // Array of cities with details (image, name, description, and link to more info)
+        const cities = [
+            {
+                name: "Lahore",
+                img: "lahore.webp",
+                description: "Lahore is the capital and largest city of the Pakistani province of Punjab. It is the second largest city in Pakistan.",
+                population: "Population: 13 million",
+                
+            },
+            {
+                name: "Karachi",
+                img: "karachi.jpeg",
+                description: "Karachi is the capital city of the Pakistani province of Sindh. It is the largest city in Pakistan and the 12th largest in the world.",
+                population: "Population: 20 million",
+                
+            },
+            {
+                name: "Peshawar",
+                img: "peshawar.jpeg",
+                description: "Peshawar is the famous and popular city in Pakistan. Peshawar is the capital of province Khyber Pakhtoon Khuwan (whose old name was NWFP).",
+                population: "Population: 4.8 million",
+                
+            },
+            {
+                name: "Multan",
+                img: "multan.jpeg",
+                description: "Multan is a agricultural city in Punjab and third largest city by area of Pakistan.",
+                population: "Population: 1.8 million",
+                
+            },
+            {
+                name: "Islamabad",
+                img: "islamabad.jpeg",
+                description: "Islamabad. As the capital city of Pakistan, Islamabad is known for its modern infrastructure, greenery, and scenic beauty.",
+                population: "Population: 1.1 million",
+                
+            },
+            {
+                name: "faislabad",
+                img: "faisalabad.jpeg",
+                description: "Faisalabad, previously known as Lyallpur, is the third-largest city in Pakistan and an industrial center. It is renowned for its textile industry.",
+                population: "Population: 3.8 million",
+                
+            },
+            {
+                name: "Rawalpindi",
+                img: "rawalpindi.jpeg",
+                description: "Rawalpindi is the third-largest city in the Pakistani province of Punjab. It is a commercial and metropolitan city, being the fourth most populous in Pakistan.",
+                population: "Population: 2.3 million",
+                
+            },
+            {
+                name: "Quetta",
+                img: "quetta.jpeg",
+                description: "Quetta is the capital and largest city of the Pakistani province of Balochistan,which is famous for its beautiful visiting places.",
+                population: "Population: 1.6 million",
+               
+            },
+            {
+                name: "Gujranwala",
+                img: "gujranwala.jpeg",
+                description: "Gujranwala, an industrial city in the Punjab province, is known for its economic significance and agricultural productivity.",
+                population: "Population: 2.0 million",
+                
+            }
+        ];
+
+        // Function to generate city cards dynamically with links
+        function loadCities() {
+            const cityContainer = document.getElementById("city-container");
+
+            cities.forEach(function(city) {
+                const cityCard = document.createElement("a"); // Create anchor element
+                cityCard.className = "city-card";
+                cityCard.href = city.page; // Set href to the city's page
+
+                cityCard.innerHTML = `
+                    <img src="${city.img}" alt="${city.name}">
+                    <div class="city-details">
+                        <h3>${city.name}</h3>
+                        <p>${city.description}</p>
+                        <p>${city.population}</p>
+                    </div>
+                `;
+
+                cityContainer.appendChild(cityCard);
+            });
+        }
+
+        // Call function to load cities when the page loads
+        window.onload = loadCities;
+    </script>
+    
+</body>
+</html>
